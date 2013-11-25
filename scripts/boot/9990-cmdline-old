@@ -241,6 +241,25 @@ Cmdline_old ()
 				UNIONTYPE="${_PARAMETER#union=}"
 				export UNIONTYPE
 				;;
+
+			vyatta-union=*)
+				# vyatta union boot
+				LIVE_MEDIA_PATH="${ARGUMENT#vyatta-union=}"
+				PERSISTENCE_PATH="$LIVE_MEDIA_PATH"
+				PERSISTENCE="true"
+				export LIVE_MEDIA_PATH PERSISTENT_PATH PERSISTENT
+
+				NONETWORKING="true"
+
+                                #NOAUTOLOGIN="Yes"
+				#NOUSER="Yes"
+				#HOSTNAME="vyatta"
+				#LIVECONF="changed"
+
+				export NOAUTOLOGIN NONETWORKING NOUSER HOSTNAME LIVECONF
+                                UNIONTYPE="overlayfs"
+                                export UNIONTYPE
+				;;
 		esac
 	done
 
