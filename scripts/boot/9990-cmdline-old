@@ -247,16 +247,9 @@ Cmdline_old ()
 				LIVE_MEDIA_PATH="${ARGUMENT#vyatta-union=}"
 				PERSISTENCE_PATH="$LIVE_MEDIA_PATH"
 				PERSISTENCE="true"
-				export LIVE_MEDIA_PATH PERSISTENT_PATH PERSISTENT
-
+				export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
 				NONETWORKING="true"
-
-                                #NOAUTOLOGIN="Yes"
-				#NOUSER="Yes"
-				#HOSTNAME="vyatta"
-				#LIVECONF="changed"
-
-				export NOAUTOLOGIN NONETWORKING NOUSER HOSTNAME LIVECONF
+				export NONETWORKING
                                 UNIONTYPE="overlayfs"
                                 export UNIONTYPE
 				;;
