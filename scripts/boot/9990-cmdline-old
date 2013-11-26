@@ -244,7 +244,7 @@ Cmdline_old ()
 
 			vyatta-union=*)
 				# vyatta union boot
-				LIVE_MEDIA_PATH="${ARGUMENT#vyatta-union=}"
+				LIVE_MEDIA_PATH="${_PARAMETER#vyatta-union=}"
 				PERSISTENCE_PATH="$LIVE_MEDIA_PATH"
 				PERSISTENCE="true"
 				export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
