@@ -34,7 +34,7 @@ Fstab ()
 		echo "tmpfs /tmp tmpfs nosuid,nodev 0 0" >> "${_FSTAB}"
 	fi
 
-	if [ -n "${NOFASTBOOT}" ]
+	if [ -z "${NOFASTBOOT}" ]
 	then
 		touch root/fastboot
 	fi
