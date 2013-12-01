@@ -428,20 +428,21 @@ subdevices ()
 
 storage_devices()
 {
-	black_listed_devices="${1}"
+#	black_listed_devices="${1}"
+	black_listed_devices=" "
 	white_listed_devices="${2}"
 
 	for sysblock in $(echo /sys/block/* | tr ' ' '\n' | grep -vE "loop|ram|fd")
 	do
 		fulldevname=$(sys2dev "${sysblock}")
 
-		if is_in_space_sep_list ${fulldevname} ${black_listed_devices} || \
-			[ -n "${white_listed_devices}" ] && \
-			! is_in_space_sep_list ${fulldevname} ${white_listed_devices}
-		then
-			# skip this device entirely
-			continue
-		fi
+#		if is_in_space_sep_list ${fulldevname} ${black_listed_devices} || \
+#			[ -n "${white_listed_devices}" ] && \
+#			! is_in_space_sep_list ${fulldevname} ${white_listed_devices}
+#		then
+#			# skip this device entirely
+#			continue
+#		fi
 
 		for dev in $(subdevices "${sysblock}")
 		do
