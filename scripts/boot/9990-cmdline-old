@@ -250,7 +250,7 @@ Cmdline_old ()
 			vyatta-union=*)
 				# vyatta union boot for backwards compatible
 				LIVE_MEDIA_PATH="${_PARAMETER#vyatta-union=}"
-				PERSISTENCE_PATH="$LIVE_MEDIA_PATH"
+				PERSISTENCE_PATH="$LIVE_MEDIA_PATH/"
 				PERSISTENCE="true"
 				export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
 				NONETWORKING="true"
@@ -262,7 +262,7 @@ Cmdline_old ()
                         vyos-union=*)
                                 # vyos union boot
                                 LIVE_MEDIA_PATH="${_PARAMETER#vyos-union=}"
-                                PERSISTENCE_PATH="$LIVE_MEDIA_PATH"
+                                PERSISTENCE_PATH="$LIVE_MEDIA_PATH/"
                                 PERSISTENCE="true"
                                 export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
                                 NONETWORKING="true"
