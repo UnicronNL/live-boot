@@ -766,7 +766,7 @@ mount_persistence_media ()
 		fi
 	elif [ "${backing}" != "${old_backing}" ]
 	then
-		if mount --move ${old_backing} ${backing} >/dev/null
+		if mount -o remount,rw ${old_backing} >/dev/null
 		then
 			echo ${backing}
 			return 0
