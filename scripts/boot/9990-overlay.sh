@@ -201,10 +201,6 @@ setup_unionfs ()
 				removable-usb)
 					whitelistdev="$(removable_usb_dev)"
 					;;
-
-                                all)
-                                        whitelistdev="$(removable_usb_dev) $(removable_dev) $(removable_usb_dev)"
-                                        ;;
 			esac
 			if [ -z "${whitelistdev}" ]
 			then
