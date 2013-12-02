@@ -428,8 +428,7 @@ subdevices ()
 
 storage_devices()
 {
-#	black_listed_devices="${1}"
-	black_listed_devices=" "
+	black_listed_devices="${1}"
 	white_listed_devices="${2}"
 
 	for sysblock in $(echo /sys/block/* | tr ' ' '\n' | grep -vE "loop|ram|fd")
@@ -967,7 +966,7 @@ find_persistence_media ()
 	white_listed_devices="${2}"
 	ret=""
 
-	black_listed_devices="$(what_is_mounted_on /live/medium)"
+	black_listed_devices=" "
 
 	for dev in $(storage_devices "${black_listed_devices}" "${white_listed_devices}")
 	do
