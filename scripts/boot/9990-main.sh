@@ -200,6 +200,7 @@ Main ()
 
 	Fstab
 	Netbase
+	vyos
 
 	Swap
 
