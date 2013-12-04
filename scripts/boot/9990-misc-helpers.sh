@@ -767,7 +767,7 @@ mount_persistence_media ()
 	then
 		if mount -o remount,rw ${old_backing} >/dev/null
 		then
-			echo ${backing}
+			echo ${old_backing}
 			return 0
 		else
 			[ -z "${probe}" ] && log_warning_msg "Failed to move persistence media ${device}"
