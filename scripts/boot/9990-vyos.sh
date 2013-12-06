@@ -29,10 +29,10 @@ fi 2>/dev/null
 
 if [ -d /root/opt/vyatta/etc/config ]
 then
-    if [ -d /root/lib/live/mount/overlay/config ]
+    if [ -d /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config ]
     then
-      log_begin_msg "Using /lib/live/mount/overlay/config..."
-      mount -o bind /root/lib/live/mount/overlay/config /root/opt/vyatta/etc/config
+      log_begin_msg "/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
+      mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
       log_end_msg
     elif [ -d /root/media/floppy/config ]
     then
@@ -40,9 +40,9 @@ then
       mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
       log_end_msg
     else
-      log_begin_msg "Creating /lib/live/mount/overlay/config..."
-      cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/overlay
-      mount -o bind /root/lib/live/mount/overlay/config /root/opt/vyatta/etc/config
+      log_begin_msg "Creating /lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
+      cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc
+      mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
       log_end_msg
     fi
 fi
