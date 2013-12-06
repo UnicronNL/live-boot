@@ -29,9 +29,10 @@ fi 2>/dev/null
 
 if [ -d /root/opt/vyatta/etc/config ]
 then
-    if [ -f /root/lib/live/mount/medium/persistence.conf ]
+    if [ -d /root/lib/live/mount/overlay/config ]
     then
-      log_begin_msg "Using /live/overlay/config..."
+      log_begin_msg "Using /lib/live/mount/overlay/config..."
+      mount -o bind /root/lib/live/mount/overlay/config /root/opt/vyatta/etc/config
       log_end_msg
     elif [ -d /root/media/floppy/config ]
     then
@@ -39,9 +40,9 @@ then
       mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
       log_end_msg
     else
-      log_begin_msg "Creating /live/overlay/config..."
+      log_begin_msg "Creating /lib/live/mount/overlay/config..."
       cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/overlay
-      mount -o bind /root/lib/live/mount/overlay /root/opt/vyatta/etc/config
+      mount -o bind /root/lib/live/mount/overlay/config /root/opt/vyatta/etc/config
       log_end_msg
     fi
 fi
