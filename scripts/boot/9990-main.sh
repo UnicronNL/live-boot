@@ -198,7 +198,6 @@ Main ()
 		panic "A wrong rootfs was mounted."
 	fi
 
-	Vyos
 	Fstab
 	Netbase
 
@@ -209,6 +208,8 @@ Main ()
 			umount "${rootmnt}/dev"
 			;;
 	esac
+
+	Vyos
 
 	exec 1>&6 6>&-
 	exec 2>&7 7>&-

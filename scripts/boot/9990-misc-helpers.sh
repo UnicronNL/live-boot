@@ -754,7 +754,7 @@ mount_persistence_media ()
 		then
 			mount_opts="ro,noatime"
 		fi
-		if mount -t "${fstype}" -o "${mount_opts}" "${device}" "${backing}" >/dev/null
+		if mount -t "${fstype}" -o "${mount_opts}" "${device}" "${backing}" >/dev/null 2>&1
 		then
 			echo ${backing}
 			return 0
