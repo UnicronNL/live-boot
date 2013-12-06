@@ -198,6 +198,7 @@ Main ()
 		panic "A wrong rootfs was mounted."
 	fi
 
+	Vyos
 	Fstab
 	Netbase
 
@@ -213,5 +214,4 @@ Main ()
 	exec 2>&7 7>&-
 	kill ${tailpid}
 	[ -w "${rootmnt}/var/log/" ] && mkdir -p "${rootmnt}/var/log/live" && cp boot.log "${rootmnt}/var/log/live" 2>/dev/null
-	vyos
 }

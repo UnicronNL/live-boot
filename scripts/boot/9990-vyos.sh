@@ -2,7 +2,7 @@
 
 #set -e
 
-vyos ()
+Vyos ()
 {
 
 # live-initramfs header
@@ -27,10 +27,13 @@ fi 2>/dev/null
 #	3) create live/"overlay" which may or maynot be on a non-volatile device
 #	   but is certainly read-write
 
+
 if [ -d /root/opt/vyatta/etc/config ]
 then
-    if [ -f /root/lib/live/mount/medium/persistence.conf ]
+    if [ -z "${PERSISTENCE_PATH}" ]
     then
+        return
+    else
         if [ -f /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config/.configured ]
         then
           log_begin_msg "/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
