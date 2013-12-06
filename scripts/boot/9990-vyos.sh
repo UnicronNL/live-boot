@@ -46,7 +46,7 @@ then
           log_end_msg
         else
           log_begin_msg "Creating /lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
-          cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc
+          cp -aun /root/opt/vyatta/etc/config /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc
           mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
           touch /root/opt/vyatta/etc/config/.configured
           log_end_msg
