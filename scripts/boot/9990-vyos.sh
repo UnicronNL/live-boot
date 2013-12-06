@@ -2,7 +2,6 @@
 
 #set -e
 
-# initramfs-tools header
 vyos ()
 {
 
@@ -30,27 +29,25 @@ fi 2>/dev/null
 
 if [ -d /root/opt/vyatta/etc/config ]
 then
-    if [ -d /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config ]
+    if [ -f /root/lib/live/mount/medium/persistence.conf ]
     then
-      log_begin_msg "/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
-      mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
-      log_end_msg
-    elif [ -d /root/media/floppy/config ]
-    then
-      log_begin_msg "Using /root/media/floppy/config..."
-      mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
-      log_end_msg
-    else
-      log_begin_msg "Creating /lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
-      cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc
-      mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
-      log_end_msg
+        if [ -f /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config/.configured ]
+        then
+          log_begin_msg "/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
+          mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
+          log_end_msg
+        elif [ -d /root/media/floppy/config ]
+        then
+          log_begin_msg "Using /root/media/floppy/config..."
+          mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
+          log_end_msg
+        else
+          log_begin_msg "Creating /lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config..."
+          cp -a /root/opt/vyatta/etc/config /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc
+          mount -o bind /root/lib/live/mount/medium${PERSISTENCE_PATH}live-rw/opt/vyatta/etc/config /root/opt/vyatta/etc/config
+          touch /root/opt/vyatta/etc/config/.configured
+          log_end_msg
+        fi
     fi
 fi
-
-
-# Local Variables:
-# mode: shell-script
-# sh-indentation: 4
-# End:
 }
