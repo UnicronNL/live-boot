@@ -9,6 +9,7 @@ vyos ()
 # live-initramfs header
 
 	. /scripts/functions
+	. /lib/live/boot/9990-initramfs-tools.sh
 
 # live-initramfs script
 
