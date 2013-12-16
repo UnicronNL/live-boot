@@ -32,28 +32,21 @@ unioncfgpath="$(trim_path /root/lib/live/mount/medium/${PERSISTENCE_PATH}/live-r
 
 if [ -d /root/opt/vyatta/etc/config ]
 then
-    if [ -z "${PERSISTENCE_PATH}" ]
+    if [ -d ${unioncfgpath}/config ]
     then
-        return
+        log_begin_msg "Using "${unioncfgpath}/config..."
+        mount -o bind ${unioncfgpath}/config /root/opt/vyatta/etc/config
+        log_end_msg
+    elif [ -d /root/media/floppy/config ]
+    then
+        log_begin_msg "Using /root/media/floppy/config..."
+        mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
+        log_end_msg
     else
-        if [ -f ${unioncfgpath}/opt/vyatta/etc/config/.configured ]
-        then
-          log_begin_msg "${unioncfgpath}..."
-          mount -o bind ${unioncfgpath}/opt/vyatta/etc/config /root/opt/vyatta/etc/config
-          log_end_msg
-        elif [ -d /root/media/floppy/config ]
-        then
-          log_begin_msg "Using /root/media/floppy/config..."
-          mount -o bind /root/media/floppy/config /root/opt/vyatta/etc/config
-          log_end_msg
-        else
-          log_begin_msg "Creating ${unioncfgpath}..."
-          cp -a /root/opt/vyatta/etc/config ${unioncfgpath}/opt/vyatta/etc >/dev/null 2>&1
-          mount -o bind ${unioncfgpath}/opt/vyatta/etc/config /root/opt/vyatta/etc/config
-          touch /root/opt/vyatta/etc/config/.configured
-          log_end_msg
-        fi
+        log_begin_msg "Creating ${unioncfgpath}/config..."
+        cp -a /root/opt/vyatta/etc/config ${unioncfgpath} >/dev/null 2>&1
+        mount -o bind ${unioncfgpath}/config /root/opt/vyatta/etc/config
+        log_end_msg
     fi
 fi
 }
-
