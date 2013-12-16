@@ -34,7 +34,7 @@ if [ -d /root/opt/vyatta/etc/config ]
 then
     if [ -d ${unioncfgpath}/config ]
     then
-        log_begin_msg "Using "${unioncfgpath}/config..."
+        log_begin_msg "Using ${unioncfgpath}/config..."
         mount -o bind ${unioncfgpath}/config /root/opt/vyatta/etc/config
         log_end_msg
     elif [ -d /root/media/floppy/config ]
