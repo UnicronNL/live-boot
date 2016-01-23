@@ -255,7 +255,7 @@ Cmdline_old ()
 				export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
 				NONETWORKING="true"
 				export NONETWORKING
-                                UNIONTYPE="overlayfs"
+                                UNIONTYPE="overlay"
                                 export UNIONTYPE
 				;;
 
@@ -267,7 +267,7 @@ Cmdline_old ()
                                 export LIVE_MEDIA_PATH PERSISTENCE_PATH PERSISTENCE
                                 NONETWORKING="true"
                                 export NONETWORKING
-                                UNIONTYPE="overlayfs"
+                                UNIONTYPE="overlay"
                                 export UNIONTYPE
                                 ;;
 		esac
